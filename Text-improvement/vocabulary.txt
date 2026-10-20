@@ -1,0 +1,290 @@
+# ============================================================================
+# Technical Vocabulary & Canonical Casing Dictionary (~220 terms)
+# Format:
+#   - Single canonical term per line (e.g. "FastAPI") matches case-insensitively
+#   - Or "alias => Canonical" for common spoken/typed synonyms (e.g. "postgres => PostgreSQL")
+# Used by:
+#   1. rules/capitalization.py (deterministic casing)
+#   2. vocab.py (exact + fuzzy hints in LLM user prompt)
+#   3. textprompt/typo.py (high-frequency SymSpell boost so tech words are never "corrected")
+# ============================================================================
+
+# --- Explicit Alias Mappings ---
+postgres => PostgreSQL
+postgresql => PostgreSQL
+fastapi => FastAPI
+nextjs => Next.js
+next.js => Next.js
+nodejs => Node.js
+node.js => Node.js
+vuejs => Vue.js
+vue.js => Vue.js
+nuxtjs => Nuxt.js
+reactjs => React
+typescript => TypeScript
+javascript => JavaScript
+golang => Go
+csharp => C#
+pywin32 => pywin32
+symspell => SymSpell
+symspellpy => symspellpy
+rapidfuzz => RapidFuzz
+pydantic => Pydantic
+openrouter => OpenRouter
+groq => Groq
+cerebras => Cerebras
+github => GitHub
+gitlab => GitLab
+bitbucket => Bitbucket
+vscode => VS Code
+tailwindcss => Tailwind CSS
+tailwind => Tailwind CSS
+mongodb => MongoDB
+dynamodb => DynamoDB
+mariadb => MariaDB
+duckdb => DuckDB
+chromadb => ChromaDB
+qdrant => Qdrant
+pinecone => Pinecone
+weaviate => Weaviate
+milvus => Milvus
+pgvector => pgvector
+sqlite => SQLite
+redis => Redis
+memcached => Memcached
+kafka => Kafka
+rabbitmq => RabbitMQ
+graphql => GraphQL
+grpc => gRPC
+trpc => tRPC
+rest api => REST API
+restful => RESTful
+oauth => OAuth
+oauth2 => OAuth 2.0
+jwt => JWT
+jwts => JWTs
+json => JSON
+jsonl => JSONL
+yaml => YAML
+toml => TOML
+html => HTML
+css => CSS
+scss => SCSS
+sass => Sass
+sql => SQL
+nosql => NoSQL
+ pr => PR
+cli => CLI
+sdk => SDK
+api => API
+apis => APIs
+url => URL
+urls => URLs
+uri => URIs
+uuid => UUID
+cors => CORS
+csrf => CSRF
+xss => XSS
+ssr => SSR
+ssg => SSG
+isr => ISR
+spa => SPA
+pwa => PWA
+dom => DOM
+orm => ORM
+cicd => CI/CD
+ci/cd => CI/CD
+llm => LLM
+llms => LLMs
+stt => STT
+tts => TTS
+rag => RAG
+gpu => GPU
+cpu => CPU
+ram => RAM
+vram => VRAM
+ttft => TTFT
+
+# --- Canonical Tech Terms (Languages, Frameworks, Tools, Cloud) ---
+Python
+PyTorch
+TensorFlow
+JAX
+Scikit-learn
+Pandas
+NumPy
+Polars
+SciPy
+Matplotlib
+Jupyter
+PyInstaller
+Pytest
+Ruff
+Mypy
+Hatchling
+Uvicorn
+Gunicorn
+Starlette
+SQLAlchemy
+Alembic
+AsyncIO
+httpx
+aiohttp
+Celery
+ Dramatiq
+Django
+Flask
+Quart
+Litestar
+Tornado
+Playwright
+Selenium
+BeautifulSoup
+Scrapy
+Watchdog
+Pystray
+Pillow
+Tkinter
+PyQt
+PySide
+Win32
+PowerShell
+Windows Terminal
+AutoHotkey
+Winget
+Chocolatey
+Scoop
+Rust
+Cargo
+Tokio
+Axum
+Actix
+Serde
+Tauri
+WebAssembly
+WASM
+Kotlin
+Swift
+Objective-C
+Dart
+Flutter
+React Native
+Expo
+Electron
+Svelte
+SvelteKit
+SolidJS
+Astro
+Remix
+Angular
+Vite
+Webpack
+Rollup
+esbuild
+Turbopack
+Bun
+Deno
+pnpm
+npm
+Yarn
+Prisma
+Drizzle
+TypeORM
+Sequelize
+Mongoose
+Supabase
+Firebase
+Appwrite
+PocketBase
+Convex
+Clerk
+Auth0
+NextAuth
+Lucia
+Stripe
+Twilio
+SendGrid
+Resend
+Cloudflare
+Cloudflare Workers
+Vercel
+Netlify
+Fly.io
+Railway
+Render
+Heroku
+DigitalOcean
+Linode
+Hetzner
+AWS
+Amazon Web Services
+EC2
+S3
+Lambda
+CloudFront
+Route 53
+ECS
+EKS
+Fargate
+RDS
+Aurora
+Google Cloud
+GCP
+BigQuery
+Cloud Run
+Vertex AI
+Gemini
+Azure
+Docker
+Docker Compose
+Kubernetes
+K8s
+Helm
+Terraform
+Pulumi
+Ansible
+Prometheus
+Grafana
+Datadog
+Sentry
+OpenTelemetry
+Jaeger
+Nginx
+Caddy
+Traefik
+Envoy
+HAProxy
+Linux
+Ubuntu
+Debian
+Fedora
+Arch Linux
+Alpine
+WSL
+WSL2
+Git
+GitHub Actions
+GitHub Copilot
+GitHub Models
+OpenAI
+Anthropic
+Claude
+Mistral
+Llama
+DeepSeek
+Qwen
+Hugging Face
+Ollama
+vLLM
+LangChain
+LlamaIndex
+LiteLLM
+Cursor
+Windsurf
+Antigravity
+Zed
+Neovim
+Vim
+KeepassXC
+1Password
+Bitwarden

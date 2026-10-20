@@ -1,0 +1,40 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments & uv
+.venv/
+venv/
+ENV/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.spec
+
+# Secrets & API Keys (never commit!)
+.env
+.env.*
+*api_key*
+*secret*.json
+*credentials*.json
+providers.yaml
+usage.json
+
+# Pickled SymSpell cache & recorded eval caches
+*.pkl
+*.pickle
+recorded_responses/
+
+# Logs & local benchmark outputs
+*.log
+logs/
+benchmark_results.md
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

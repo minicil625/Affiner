@@ -1,0 +1,151 @@
+# ============================================================================
+# TextPrompt AI — Configuration (Cloud Free-Tier Edition)
+# Shared sections (providers, routing, privacy, modes, schemas, debug_log_text)
+# follow the promptcore §4.14 specification.
+# API keys are never stored here; they live in Windows Credential Manager
+# under service "PromptCore".
+# ============================================================================
+
+providers:
+  groq:
+    enabled: true
+    models:
+      fast: "llama-3.1-8b-instant"
+      quality: "llama-3.3-70b-versatile"
+    limits:
+      rpm: 30
+      rpd: 14400
+      tpm: 6000
+      tpd: 500000
+  cerebras:
+    enabled: true
+    models:
+      fast: "llama3.1-8b"
+      quality: "llama-3.3-70b"
+    limits:
+      rpm: 30
+      rpd: 14400
+      tpm: 60000
+      tpd: 1000000
+  gemini:
+    enabled: true
+    models:
+      fast: "gemini-2.5-flash-lite"
+      quality: "gemini-2.5-flash-lite"
+    limits:
+      rpm: 15
+      rpd: 1000
+      tpm: 250000
+      tpd: 1000000
+  openrouter:
+    enabled: true
+    models:
+      fast: "meta-llama/llama-3.2-3b-instruct:free"
+      quality: "meta-llama/llama-3.3-70b-instruct:free"
+    limits:
+      rpm: 20
+      rpd: 50
+      tpm: 40000
+      tpd: 200000
+  github_models:
+    enabled: false
+    models:
+      fast: "gpt-4o-mini"
+      quality: "gpt-4o"
+  mistral:
+    enabled: false
+    models:
+      fast: "mistral-small-latest"
+      quality: "mistral-small-latest"
+
+routing:
+  clean_only:
+    chain: [groq.fast, cerebras.fast, gemini.fast, openrouter.fast]
+    stream: true
+    hedge:
+      enabled: true
+      after_ms: 600
+      trigger: first_token
+    timeout_ms: 1500
+  clean_plus_improved:
+    chain: [groq.quality, gemini.quality, cerebras.quality, openrouter.quality]
+    stream: false
+    hedge:
+      enabled: false
+      after_ms: 1600
+      trigger: full_response
+    timeout_ms: 5000
+  structured_json:
+    chain: [gemini.quality, groq.quality, cerebras.quality, openrouter.quality]
+    stream: false
+    hedge:
+      enabled: false
+      after_ms: 1600
+      trigger: full_response
+    timeout_ms: 4000
+  latency_ranking: true
+  quota_safety_margin: 0.10
+
+privacy:
+  allow_cloud_text: true             # false = deterministic rules only, Modes 2/3 disabled
+  exclude_training_providers: false  # true = skip presets that may train on free-tier data
+  excluded_apps:                     # nothing leaves the PC when these windows are active
+    - "KeePassXC.exe"
+    - "1Password.exe"
+    - "Bitwarden.exe"
+
+modes:
+  default: clean_only
+  fast_path: true
+  fast_path_strictness: balanced     # balanced | aggressive | off
+  sentence_punctuation: auto         # auto | always | never
+  wrap_json_fence: false
+
+schemas:
+  structured_json: default
+
+debug_log_text: false
+
+# ============================================================================
+# TextPrompt App-Specific Sections
+# ============================================================================
+
+hotkeys:
+  run_active: "ctrl+alt+space"
+  mode_1: "ctrl+alt+1"
+  mode_2: "ctrl+alt+2"
+  mode_3: "ctrl+alt+3"
+  cycle_mode: "ctrl+alt+m"
+  undo_last: "ctrl+alt+z"
+
+capture:
+  auto_select_all: false
+  copy_timeout_ms: 300
+  backup_formats: all                # all | text_only
+  max_chars: 6000
+  copy_rules:
+    "WindowsTerminal.exe": "ctrl+shift+c"
+    "cmd.exe": "ctrl+shift+c"
+    "powershell.exe": "ctrl+shift+c"
+    "pwsh.exe": "ctrl+shift+c"
+    "alacritty.exe": "ctrl+shift+c"
+    "wezterm-gui.exe": "ctrl+shift+c"
+
+paste:
+  restore_clipboard: true
+  restore_delay_ms: 400
+  rules:
+    "WindowsTerminal.exe": "ctrl+shift+v"
+    "cmd.exe": "ctrl+shift+v"
+    "powershell.exe": "ctrl+shift+v"
+    "pwsh.exe": "ctrl+shift+v"
+    "alacritty.exe": "ctrl+shift+v"
+    "wezterm-gui.exe": "ctrl+shift+v"
+
+typo:
+  enabled: true
+  extra_dictionaries: []
+
+ui:
+  overlay: true
+  sounds: true
